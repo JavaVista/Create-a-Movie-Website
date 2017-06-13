@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Javi's Movie Trailers!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <script type="text/javascript">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&amp;h=24" alt="">
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <h1><a class="navbar-brand" href="#">Javi's Movie Trailers</a></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="i-80SGWfEjM" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/11924889/p11924889_p_v7_aa.jpg" width="220" height="342" alt="Movie">
+    <h2>The Secret Life of Pets</h2>
+    <h3>Rated:NR</h3>
+    <p>A movie about what your pets do in the time between when you leave for work and return home.</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="FyKWUTwSYAs" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/46/Deadpool_poster.jpg" width="220" height="342" alt="Movie">
+    <h2>Deadpool</h2>
+    <h3>Rated:R</h3>
+    <p>A former Special Forces operative turned mercenary is subjected to a rogue experiment and becomes Deadpool.</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="rzRJWy-3_Dc" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/f/f5/Airplane%21.jpg" width="220" height="342" alt="Movie">
+    <h2>Airplane</h2>
+    <h3>Rated:PG</h3>
+    <p>Disaster Movie about an Airplane in trouble</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="09nTwccQTUA" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.movienewz.com/img/films/zoolander-2-movie-poster.jpg" width="220" height="342" alt="Movie">
+    <h2>Zoolander 2</h2>
+    <h3>Rated:NR</h3>
+    <p>Derek and Hansel are modelling again when an opposing company attempts to take them out from the business.</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="q9y3z-lx-ZE" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/2/26/London_Has_Fallen_poster.jpg" width="220" height="342" alt="Movie">
+    <h2>London Has Fallen</h2>
+    <h3>Rated:NR</h3>
+    <p>U.S. Secret Service agent Mike Banning springs into action when terrorists attack London.</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="pR6QibJ68qM" data-toggle="modal" data-target="#trailer">
+    <img src="http://i51.photobucket.com/albums/f392/techno-logic/Super%20Janil.jpg" width="220" height="342" alt="Movie">
+    <h2>Super Sparkle Janil</h2>
+    <h3>Rated:G</h3>
+    <p>The story of a Smart Girl by day and a Super Girl at night.</p>
+</div>
+
+    </div>
+    <footer>
+    <div>
+        <br>copyright &copy; 2015 Javier Carrion
+        <br>All webpages appearing in this work are fictitious and for demostration purposes only. Any resemblance to real websites, living or dead, is purely coincidental.
+    </div>
+    </footer>
+  </body>
+</html>
